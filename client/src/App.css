@@ -1,0 +1,22 @@
+:root {
+  --primary-dark: #111111;
+  --accent-color: #ffc107;
+}
+
+.navbar__bg {
+  background-color: var(--primary-dark) !important;
+}
+
+nav .navbar--brand {
+  color: var(--accent-color) !important;
+}
+
+.btn {
+  color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
+.btn:hover {
+  color: var(--primary-dark) !important;
+  background-color: var(--accent-color) !important;
+}
