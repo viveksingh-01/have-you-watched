@@ -55,7 +55,17 @@ footer {
   color: #ffffff;
 }
 
-.movie__card--title {
+.movie__title {
   font-size: 18px !important;
-  font-weight: 600 !important;
+  font-weight: 300;
+  margin-right: 8px;
+}
+
+.movie__rating {
+  color: var(--accent-color) !important;
+  background-color: #000;
+  /* border: 1px solid; */
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 9px;
 }
