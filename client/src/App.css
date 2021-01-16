@@ -3,8 +3,22 @@
   --accent-color: #ffc107;
 }
 
+.app {
+  background-color: var(--primary-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #eeeeee !important;
+}
+
 .navbar__bg {
-  background-color: var(--primary-dark) !important;
+  background-color: #000000 !important;
 }
 
 nav .navbar--brand {
@@ -22,7 +36,8 @@ nav .navbar--brand {
 }
 
 footer {
-  background-color: #eeeeee;
+  background-color: #000000;
+  color: #eeeeee;
   position: fixed;
   bottom: 0;
   width: 100%;

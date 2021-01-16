@@ -7,13 +7,13 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
+    <div className="app">
       <NavigationBar />
       <main className="container p-3">
         <LandingPage />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
