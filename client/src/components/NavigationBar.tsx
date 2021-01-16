@@ -7,7 +7,7 @@ const NavigationBar = () => {
       <Navbar expand="lg" variant="dark" className="navbar__bg">
         <Container>
           <Navbar.Brand className="navbar--brand" href="#">
-            Have You Watched?
+            HaveYouWatched?
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

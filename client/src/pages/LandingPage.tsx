@@ -1,10 +1,12 @@
-import React from 'react';
-import NavigationBar from '../components/NavigationBar';
+import React, { useState } from 'react';
 
 const LandingPage = () => {
   return (
     <>
-      <NavigationBar />
+      <header>
+        <h3>Featured</h3>
+      </header>
+      <section></section>
     </>
   );
 };

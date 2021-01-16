@@ -20,3 +20,11 @@ nav .navbar--brand {
   color: var(--primary-dark) !important;
   background-color: var(--accent-color) !important;
 }
+
+footer {
+  background-color: #eeeeee;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
