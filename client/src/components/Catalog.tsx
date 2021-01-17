@@ -10,9 +10,14 @@ const Catalog = ({ header, url }: { header: string; url: string }) => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const { data } = await axios.get(url);
-      setMovies(data.results);
-      setShowSpinner(false);
+      try {
+        const { data } = await axios.get(url);
+        setMovies(data.results);
+        setShowSpinner(false);
+      } catch (error) {
+        console.error(error);
+        setShowSpinner(false);
+      }
     };
     fetchMovies();
   }, [url]);
