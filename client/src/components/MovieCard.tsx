@@ -12,6 +12,10 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             <span className="mr-2 movie__title">{movie.title}</span>
             <span className="movie__rating">{movie.vote_average.toFixed(1)}</span>
           </Card.Title>
+          <div className="movie__overview">
+            <Card.Subtitle className="font-weight-bold my-2">Overview</Card.Subtitle>
+            <Card.Text>{movie.overview}</Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>
