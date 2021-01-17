@@ -115,6 +115,10 @@ footer {
   padding: 6px 9px;
 }
 
+.movie-detail__image {
+  box-shadow: 0px 3px 18px 0px #000000;
+}
+
 .movie-detail__title {
   color: var(--accent-color) !important;
 }

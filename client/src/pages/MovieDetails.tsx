@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import { Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { RouteComponentProps } from 'react-router';
 import { API_URL, IMAGE_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
 import { IMovieDetail } from '../types/MovieDetail';
+import NumberFormat from 'react-number-format';
 
 type TParams = { movieId: string };
 
@@ -39,16 +40,23 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
 
   return (
     <>
-      <Row>
+      <Row className="py-3">
         <Col>
-          <img src={`${IMAGE_URL}${movieDetail.poster_path}`} alt={movieDetail.title} width="300px" />
+          <Image
+            className="movie-detail__image"
+            src={`${IMAGE_URL}${movieDetail.poster_path}`}
+            alt={movieDetail.title}
+            width="300px"
+          />
         </Col>
         <Col>
           <header className="mb-4">
             <h3 className="movie-detail__title">{movieDetail.title}</h3>
-            <h6 className="text-muted">
-              <i>"{movieDetail.tagline}"</i>
-            </h6>
+            {movieDetail.tagline && (
+              <h6 className="text-muted">
+                <i>"{movieDetail.tagline}"</i>
+              </h6>
+            )}
           </header>
           <section className="mb-4">
             <h5>Overview</h5>
@@ -92,13 +100,35 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
             <ListGroup.Item>
               <Row>
                 <Col className="key__col">Budget:</Col>
-                <Col className="value__col">${movieDetail.budget}</Col>
+                <Col className="value__col">
+                  {movieDetail.budget ? (
+                    <NumberFormat
+                      value={movieDetail.budget}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'$'}
+                    />
+                  ) : (
+                    'N.A.'
+                  )}
+                </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
                 <Col className="key__col">Revenue:</Col>
-                <Col className="value__col">${movieDetail.revenue}</Col>
+                <Col className="value__col">
+                  {movieDetail.revenue ? (
+                    <NumberFormat
+                      value={movieDetail.revenue}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'$'}
+                    />
+                  ) : (
+                    'N.A.'
+                  )}
+                </Col>
               </Row>
             </ListGroup.Item>
           </ListGroup>
