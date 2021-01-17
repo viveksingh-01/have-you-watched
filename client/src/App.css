@@ -116,7 +116,7 @@ footer {
 }
 
 .movie-detail__image {
-  box-shadow: 0px 3px 18px 0px #000000;
+  box-shadow: 0px 3px 6px 1px #000000;
 }
 
 .movie-detail__title {
@@ -147,4 +147,16 @@ footer {
 
 .list-group-item .value__col {
   color: var(--accent-color);
+}
+
+.back__button {
+  color: #eeeeee !important;
+  background-color: #000000 !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.back__button:hover {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
 }

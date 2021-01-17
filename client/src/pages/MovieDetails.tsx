@@ -1,16 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Image, ListGroup, Row } from 'react-bootstrap';
-import { RouteComponentProps } from 'react-router';
+import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap';
+import { RouteComponentProps, useHistory } from 'react-router';
 import { API_URL, IMAGE_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
 import { IMovieDetail } from '../types/MovieDetail';
 import NumberFormat from 'react-number-format';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 type TParams = { movieId: string };
 
 const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
   const [movieDetail, setMovieDetail] = useState<Partial<IMovieDetail>>({});
+  const history = useHistory();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -38,8 +41,16 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
     return ratingColor;
   };
 
+  const handleBackBtnClick = () => {
+    history.goBack();
+  };
+
   return (
     <>
+      <Button className="back__button" onClick={handleBackBtnClick}>
+        <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
+        Back
+      </Button>
       <Row className="py-3">
         <Col>
           <Image
