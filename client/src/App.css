@@ -114,3 +114,22 @@ footer {
   font-weight: 600;
   padding: 6px 9px;
 }
+
+.movie-detail__title {
+  color: var(--accent-color) !important;
+}
+
+.list-group-item {
+  background-color: #000 !important;
+  color: #eeeeee !important;
+  margin-bottom: 2px;
+}
+
+.list-group-item .key__col {
+  color: #cccccc;
+  font-weight: 600;
+}
+
+.list-group-item .value__col {
+  color: var(--accent-color);
+}
