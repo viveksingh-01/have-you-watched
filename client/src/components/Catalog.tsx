@@ -8,8 +8,8 @@ const Catalog = ({ header, movies }: { header: string; movies: Movie[] }) => {
       <header>
         <h3>{header}</h3>
       </header>
-      <section className="d-flex justify-content-between flex-wrap">
-        {movies.length > 0 ? (
+      <section className="movie__catalog">
+        {movies?.length > 0 ? (
           movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
         ) : (
           <h6>Oops, no movies available!</h6>
