@@ -1,12 +1,17 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Movie } from '../types/Movie';
+import { IMAGE_URL } from '../config/constants';
+import { IMovie } from '../types/Movie';
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
+interface IProps {
+  movie: IMovie;
+}
+
+const MovieCard: React.FC<IProps> = ({ movie }) => {
   return (
     <>
       <Card style={{ width: '18rem' }} className="movie__card">
-        <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+        <Card.Img variant="top" src={`${IMAGE_URL}${movie.poster_path}`} />
         <Card.Body className="p-3 movie__card--body">
           <Card.Title className="m-0 d-flex justify-content-between align-items-center">
             <span className="mr-2 movie__title">{movie.title}</span>

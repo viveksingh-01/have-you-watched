@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Movie } from '../types/Movie';
+import { IMovie } from '../types/Movie';
 import LoadingSpinner from './LoadingSpinner';
 import MovieCard from './MovieCard';
 
 const Catalog = ({ header, url }: { header: string; url: string }) => {
-  const [movies, setMovies]: [Movie[], any] = useState([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
   const [showSpinner, setShowSpinner] = useState(true);
 
   useEffect(() => {
