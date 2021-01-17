@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import { IMAGE_URL } from '../config/constants';
 import { IMovie } from '../types/Movie';
 
@@ -8,9 +9,15 @@ interface IProps {
 }
 
 const MovieCard: React.FC<IProps> = ({ movie }) => {
+  const history = useHistory();
+
+  const handleMovieClick = () => {
+    history.push(`/${movie.id}`);
+  };
+
   return (
     <>
-      <Card style={{ width: '18rem' }} className="movie__card">
+      <Card style={{ width: '18rem' }} className="movie__card" onClick={handleMovieClick}>
         <Card.Img variant="top" src={`${IMAGE_URL}${movie.poster_path}`} />
         <Card.Body className="p-3 movie__card--body">
           <Card.Title className="m-0 d-flex justify-content-between align-items-center">

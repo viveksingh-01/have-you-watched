@@ -4,15 +4,20 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import LandingPage from './pages/LandingPage';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MovieDetails from './pages/MovieDetails';
 
 function App() {
   return (
     <div className="app">
-      <NavigationBar />
-      <main className="container p-3">
-        <LandingPage />
-      </main>
-      <Footer />
+      <Router>
+        <NavigationBar />
+        <main className="container p-3">
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/:movieId" exact component={MovieDetails} />
+        </main>
+        <Footer />
+      </Router>
     </div>
   );
 }
