@@ -9,11 +9,13 @@ import NumberFormat from 'react-number-format';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Catalog from '../components/Catalog';
+import { IMovieCredits } from '../types/MovieCredits';
 
 type TParams = { movieId: string };
 
 const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
   const [movieDetail, setMovieDetail] = useState<Partial<IMovieDetail>>({});
+  const [movieCredits, setMovieCredits] = useState<Partial<IMovieCredits[]>>([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -28,6 +30,20 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
       }
     };
     fetchMovieDetails();
+  }, [match.params.movieId]);
+
+  useEffect(() => {
+    const fetchMovieCredits = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_URL}/${match.params.movieId}/credits?api_key=${MOVIE_DB_API_KEY}&language=en-US`
+        );
+        setMovieCredits(data.cast);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchMovieCredits();
   }, [match.params.movieId]);
 
   const getRatingColor = (rating: number | any): string => {
@@ -155,6 +171,19 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
                       'N.A.'
                     )}
                   </Col>
+                </Row>
+              </ListGroup.Item>
+            </ListGroup>
+            <ListGroup className="my-3">
+              <ListGroup.Item>
+                <Row className="mb-2 px-2">Starring:</Row>
+                <Row className="px-2">
+                  {movieCredits.slice(0, 4).map(credit => (
+                    <p className="mb-1">
+                      <span style={{ color: 'var(--accent-color)' }}>{credit?.name}</span> as{' '}
+                      <i>"{credit?.character}"</i>
+                    </p>
+                  ))}
                 </Row>
               </ListGroup.Item>
             </ListGroup>
