@@ -8,6 +8,7 @@ import { IMovieDetail } from '../types/MovieDetail';
 import NumberFormat from 'react-number-format';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import Catalog from '../components/Catalog';
 
 type TParams = { movieId: string };
 
@@ -154,6 +155,10 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
           </Col>
         </Row>
       </section>
+      <Catalog
+        header={'Similar Movies'}
+        url={`${API_URL}/${match.params.movieId}/similar?api_key=${MOVIE_DB_API_KEY}&language=en-US`}
+      />
     </>
   );
 };

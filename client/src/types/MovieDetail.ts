@@ -1,6 +1,7 @@
 export interface IMovieDetail {
   id: number;
   adult: boolean;
+  backdrop_path: string;
   budget: number;
   genres: { id: number; name: string }[];
   release_date: string;
