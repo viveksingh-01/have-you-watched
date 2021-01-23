@@ -135,9 +135,10 @@ footer {
 }
 
 .list-group-item {
-  background-color: #000 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 3px;
   color: #eeeeee !important;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .list-group-item .key__col {

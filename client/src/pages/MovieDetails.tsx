@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { RouteComponentProps, useHistory } from 'react-router';
-import { API_URL, IMAGE_URL } from '../config/constants';
+import { API_URL, IMAGE_URL, IMAGE_URL_ORIG } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
 import { IMovieDetail } from '../types/MovieDetail';
 import NumberFormat from 'react-number-format';
@@ -47,104 +47,113 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
 
   return (
     <>
-      <Button className="back__button" onClick={handleBackBtnClick}>
+      <Button className="back__button my-2" onClick={handleBackBtnClick}>
         <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
         Back
       </Button>
-      <Row className="py-3">
-        <Col>
-          <Image
-            className="movie-detail__image"
-            src={`${IMAGE_URL}${movieDetail.poster_path}`}
-            alt={movieDetail.title}
-            width="300px"
-          />
-        </Col>
-        <Col>
-          <header className="mb-4">
-            <h3 className="movie-detail__title">{movieDetail.title}</h3>
-            {movieDetail.tagline && (
-              <h6 className="text-muted">
-                <i>"{movieDetail.tagline}"</i>
-              </h6>
-            )}
-          </header>
-          <section className="mb-4">
-            <h5>Overview</h5>
-            <p>{movieDetail.overview}</p>
-          </section>
-          <section className="mb-4 d-flex align-items-center">
-            <span
-              className="movie-detail__rating mr-3"
-              style={{ backgroundColor: getRatingColor(movieDetail.vote_average) }}>
-              {movieDetail.vote_average?.toFixed(1)}
-            </span>
-            <span className="movie-detail__vote-count">({movieDetail.vote_count} votes)</span>
-          </section>
-        </Col>
-        <Col>
-          <ListGroup>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Status:</Col>
-                <Col className="value__col">{movieDetail.status}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Runtime:</Col>
-                <Col className="value__col">{movieDetail.runtime} mins</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Release Date:</Col>
-                <Col className="value__col">{movieDetail.release_date}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Popularity:</Col>
-                <Col className="value__col">{movieDetail.popularity}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Budget:</Col>
-                <Col className="value__col">
-                  {movieDetail.budget ? (
-                    <NumberFormat
-                      value={movieDetail.budget}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      prefix={'$'}
-                    />
-                  ) : (
-                    'N.A.'
-                  )}
-                </Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col className="key__col">Revenue:</Col>
-                <Col className="value__col">
-                  {movieDetail.revenue ? (
-                    <NumberFormat
-                      value={movieDetail.revenue}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      prefix={'$'}
-                    />
-                  ) : (
-                    'N.A.'
-                  )}
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row>
+      <section
+        className="mt-3 mb-5"
+        style={{
+          backgroundImage: `url(${IMAGE_URL_ORIG}${movieDetail.backdrop_path})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}>
+        <Row className="py-4 px-2 mx-auto" style={{ backdropFilter: 'blur(105px)', background: 'rgba(0,0,0,0.5)' }}>
+          <Col>
+            <Image
+              className="movie-detail__image"
+              src={`${IMAGE_URL}${movieDetail.poster_path}`}
+              alt={movieDetail.title}
+              width="320px"
+            />
+          </Col>
+          <Col>
+            <header className="mb-4">
+              <h3 className="movie-detail__title">{movieDetail.title}</h3>
+              {movieDetail.tagline && (
+                <h6 className="text-muted">
+                  <i>"{movieDetail.tagline}"</i>
+                </h6>
+              )}
+            </header>
+            <section className="mb-4">
+              <h5>Overview</h5>
+              <p>{movieDetail.overview}</p>
+            </section>
+            <section className="mb-4 d-flex align-items-center">
+              <span
+                className="movie-detail__rating mr-3"
+                style={{ backgroundColor: getRatingColor(movieDetail.vote_average) }}>
+                {movieDetail.vote_average?.toFixed(1)}
+              </span>
+              <span className="movie-detail__vote-count">({movieDetail.vote_count} votes)</span>
+            </section>
+          </Col>
+          <Col>
+            <ListGroup>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Status:</Col>
+                  <Col className="value__col">{movieDetail.status}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Runtime:</Col>
+                  <Col className="value__col">{movieDetail.runtime} mins</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Release Date:</Col>
+                  <Col className="value__col">{movieDetail.release_date}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Popularity:</Col>
+                  <Col className="value__col">{movieDetail.popularity}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Budget:</Col>
+                  <Col className="value__col">
+                    {movieDetail.budget ? (
+                      <NumberFormat
+                        value={movieDetail.budget}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                        prefix={'$'}
+                      />
+                    ) : (
+                      'N.A.'
+                    )}
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col className="key__col">Revenue:</Col>
+                  <Col className="value__col">
+                    {movieDetail.revenue ? (
+                      <NumberFormat
+                        value={movieDetail.revenue}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                        prefix={'$'}
+                      />
+                    ) : (
+                      'N.A.'
+                    )}
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            </ListGroup>
+          </Col>
+        </Row>
+      </section>
     </>
   );
 };
