@@ -95,6 +95,12 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
             <ListGroup>
               <ListGroup.Item>
                 <Row>
+                  <Col className="key__col">Genre:</Col>
+                  <Col className="value__col">{movieDetail.genres?.map(genre => genre.name).join(', ')}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
                   <Col className="key__col">Status:</Col>
                   <Col className="value__col">{movieDetail.status}</Col>
                 </Row>
