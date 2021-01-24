@@ -12,7 +12,7 @@ const MovieCard: React.FC<IProps> = ({ movie }) => {
   const history = useHistory();
 
   const handleMovieClick = () => {
-    history.push(`/${movie.id}`);
+    history.push(`/movies/${movie.id}`);
   };
 
   return (

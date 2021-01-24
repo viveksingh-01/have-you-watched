@@ -14,7 +14,7 @@ function App() {
         <NavigationBar />
         <main className="container p-3">
           <Route path="/" exact component={LandingPage} />
-          <Route path="/:movieId" exact component={MovieDetails} />
+          <Route path="/movies/:movieId" exact component={MovieDetails} />
         </main>
         <Footer />
       </Router>
