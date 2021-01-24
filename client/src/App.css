@@ -64,8 +64,13 @@ footer {
 }
 
 .search-result {
-  border-bottom: 1px solid #cccccc;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 2px solid #333333;
   padding: 1rem;
+}
+.search-result:hover {
+  cursor: pointer;
 }
 
 .movie__catalog {

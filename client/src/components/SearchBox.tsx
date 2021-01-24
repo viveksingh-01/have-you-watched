@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Button, Image } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import { IMAGE_URL, SEARCH_API_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
 import { IMovieDetail } from '../types/MovieDetail';
@@ -8,6 +9,7 @@ import { IMovieDetail } from '../types/MovieDetail';
 const SearchBox: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState<Partial<IMovieDetail[]>>([]);
+  const history = useHistory();
 
   const fetchMovies = async (searchedText: string) => {
     const url = `${SEARCH_API_URL}?api_key=${MOVIE_DB_API_KEY}&query=${searchedText}`;
@@ -25,6 +27,10 @@ const SearchBox: React.FC = () => {
       fetchMovies(value);
     }
     setSearchText(value);
+  };
+
+  const handleSearchResultClick = (movieId: number | undefined) => {
+    history.push(`/movies/${movieId}`);
   };
 
   return (
@@ -48,14 +54,11 @@ const SearchBox: React.FC = () => {
           <section className="search-result__container">
             {searchResults.length > 0 ? (
               searchResults.map(movie => (
-                <div className="search-result" key={movie?.id}>
-                  {' '}
-                  <div className="d-flex align-items-start">
-                    <Image src={`${IMAGE_URL}${movie?.poster_path}`} width={'72px'} />
-                    <div className="p-2 px-3">
-                      <h6>{movie?.title}</h6>
-                      <p className="text-muted">{movie?.release_date?.split('-')[0]}</p>
-                    </div>
+                <div className="search-result" key={movie?.id} onClick={() => handleSearchResultClick(movie?.id)}>
+                  <Image src={`${IMAGE_URL}${movie?.poster_path}`} width={'72px'} />
+                  <div className="p-2 px-3">
+                    <h6>{movie?.title}</h6>
+                    <p className="text-muted">{movie?.release_date?.split('-')[0]}</p>
                   </div>
                 </div>
               ))
