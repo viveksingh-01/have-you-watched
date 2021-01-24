@@ -1,31 +1,36 @@
+import { faBookmark, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const NavigationBar = () => {
   return (
     <>
       <Navbar expand="lg" variant="dark" className="navbar__bg">
         <Container>
-          <Navbar.Brand className="navbar--brand" href="#">
-            HaveYouWatched?
-          </Navbar.Brand>
+          <LinkContainer to="/" exact>
+            <Navbar.Brand className="navbar--brand">Have You Watched?</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
+              <LinkContainer to="/" exact>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-success">Search</Button>
-            </Form>
+            <Nav className="ml-auto">
+              <LinkContainer to="/movies/wishlist">
+                <Nav.Link>
+                  <FontAwesomeIcon icon={faBookmark} className="mr-1" /> Wishlist
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/login">
+                <Nav.Link>
+                  <FontAwesomeIcon icon={faSignInAlt} className="mr-1" /> Login
+                </Nav.Link>
+              </LinkContainer>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
