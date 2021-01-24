@@ -45,6 +45,7 @@ footer {
 
 .search-box__container {
   position: relative;
+  width: 100%;
 }
 
 .search-box__input {
@@ -54,7 +55,6 @@ footer {
   border: none !important;
   border-radius: 0 !important;
   padding: 1.5rem !important;
-  width: 500px !important;
 }
 
 .input-group-append > .input-group-text {
@@ -73,8 +73,8 @@ footer {
   position: absolute;
   top: 48px;
   left: 0;
+  width: calc(100% - 56px);
   z-index: 999;
-  width: 500px;
 }
 
 .search-result {
@@ -161,6 +161,7 @@ footer {
 
 .movie-detail__image {
   box-shadow: 0px 3px 6px 1px #000000;
+  width: 100%;
 }
 
 .movie-detail__title {
@@ -197,7 +198,7 @@ footer {
 .credit-cast__card {
   background-color: var(--primary-dark) !important;
   border: none !important;
-  margin-right: 16px;
+  margin: 0 16px 16px 0;
   box-shadow: 0px 3px 18px 0px #000000;
 }
 
@@ -211,4 +212,13 @@ footer {
 .back__button:hover {
   background-color: #0a0a0a !important;
   color: #ffffff !important;
+}
+
+@media screen and (min-width: 768px) {
+  .search-box__container {
+    width: 500px;
+  }
+  .credit-cast__card {
+    width: 12rem;
+  }
 }

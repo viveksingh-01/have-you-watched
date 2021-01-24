@@ -73,9 +73,9 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}>
-        <section className="py-4 px-2 mx-auto" style={{ backdropFilter: 'blur(105px)', background: 'rgba(0,0,0,0.5)' }}>
-          <Row className="m-0 mb-3 p-2">
-            <Col>
+        <section className="p-2 mx-auto" style={{ backdropFilter: 'blur(105px)', background: 'rgba(0,0,0,0.5)' }}>
+          <Row className="m-0 mb-3 p-md-2">
+            <Col className="py-3" xs={12} md={6} xl={4}>
               <Image
                 className="movie-detail__image"
                 src={`${IMAGE_URL}${movieDetail.poster_path}`}
@@ -83,7 +83,7 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
                 width="320px"
               />
             </Col>
-            <Col>
+            <Col className="py-3" xs={12} md={6} xl={4}>
               <header className="mb-4">
                 <h3 className="movie-detail__title">{movieDetail.title}</h3>
                 {movieDetail.tagline && (
@@ -105,7 +105,7 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
                 <span className="movie-detail__vote-count">({movieDetail.vote_count} votes)</span>
               </section>
             </Col>
-            <Col>
+            <Col className="py-3" xs={12} xl={4}>
               <ListGroup>
                 <ListGroup.Item>
                   <Row>

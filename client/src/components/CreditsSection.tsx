@@ -28,7 +28,7 @@ const CreditsSection: React.FC<IProps> = ({ movieId }) => {
     <>
       {movieCredits.length > 0 &&
         movieCredits.slice(0, 5).map(credit => (
-          <Card className="credit-cast__card" style={{ width: '12rem' }}>
+          <Card className="credit-cast__card">
             <Card.Img variant="top" src={`${IMAGE_URL}${credit?.profile_path}`} />
             <Card.Body className="p-3">
               <Card.Title style={{ fontSize: '16px' }}>

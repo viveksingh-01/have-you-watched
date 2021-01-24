@@ -55,13 +55,13 @@ const SearchBox: React.FC = () => {
   }, []);
 
   return (
-    <div className="py-3 my-4 px-md-3 w-100 d-flex justify-content-center">
+    <div className="py-3 my-md-4 px-md-3 w-100 d-flex justify-content-center">
       <div className="search-box__container">
         <Form inline className="search-box">
           <Form.Label htmlFor="formInputSearch" srOnly>
             Search
           </Form.Label>
-          <InputGroup className="mb-3">
+          <InputGroup className="w-100 mb-3">
             <Form.Control
               className="search-box__input"
               placeholder="Search"

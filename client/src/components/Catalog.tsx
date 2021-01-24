@@ -24,7 +24,7 @@ const Catalog = ({ header, url }: { header: string; url: string }) => {
   return (
     <>
       <header>
-        <h3>{header}</h3>
+        <h4>{header}</h4>
       </header>
       <section className="movie__catalog">
         {showSpinner ? (
