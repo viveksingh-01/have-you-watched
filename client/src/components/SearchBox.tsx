@@ -2,7 +2,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, Button, Image, InputGroup } from 'react-bootstrap';
+import { Form, Image, InputGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { IMAGE_URL, SEARCH_API_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
@@ -76,7 +76,7 @@ const SearchBox: React.FC = () => {
           </InputGroup>
         </Form>
         {searchText && showResults && (
-          <section className="search-result__container">
+          <section ref={resultContainerRef} className="search-result__container">
             {searchResults.length > 0 ? (
               searchResults.map(movie => (
                 <div className="search-result" key={movie?.id} onClick={() => handleSearchResultClick(movie?.id)}>
