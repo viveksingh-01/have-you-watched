@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, Image } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { IMAGE_URL, SEARCH_API_URL } from '../config/constants';
@@ -9,6 +9,8 @@ import { IMovieDetail } from '../types/MovieDetail';
 const SearchBox: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState<Partial<IMovieDetail[]>>([]);
+  const [showResults, setShowResults] = useState<boolean>(false);
+  const resultContainerRef = useRef<HTMLHeadingElement>(null);
   const history = useHistory();
 
   const fetchMovies = async (searchedText: string) => {
@@ -25,6 +27,7 @@ const SearchBox: React.FC = () => {
     const { value } = e.target;
     if (value) {
       fetchMovies(value);
+      setShowResults(true);
     }
     setSearchText(value);
   };
@@ -32,6 +35,22 @@ const SearchBox: React.FC = () => {
   const handleSearchResultClick = (movieId: number | undefined) => {
     history.push(`/movies/${movieId}`);
   };
+
+  // Handle and check if the click was outside Search-Results container
+  const handleOutsideClick = (e: any) => {
+    if (resultContainerRef.current && resultContainerRef.current!.contains(e.target)) {
+      return;
+    }
+    setShowResults(false);
+  };
+
+  // Setup mouse-click listener
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="py-3 my-4 px-md-3 w-100 d-flex justify-content-center">
@@ -44,13 +63,13 @@ const SearchBox: React.FC = () => {
             className="mb-2 mr-sm-2 search-box__input"
             placeholder="Search"
             value={searchText}
-            onChange={e => searchHandler(e)}
+            onChange={searchHandler}
           />
           <Button type="submit" className="mb-2">
             Submit
           </Button>
         </Form>
-        {searchText && (
+        {searchText && showResults && (
           <section className="search-result__container">
             {searchResults.length > 0 ? (
               searchResults.map(movie => (
