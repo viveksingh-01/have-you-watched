@@ -48,7 +48,21 @@ footer {
 }
 
 .search-box__input {
+  background-color: #222 !important;
+  color: #eeeeee !important;
+  box-shadow: inset 0px 0px 3px 1px #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1.5rem !important;
   width: 500px !important;
+}
+
+.input-group-append > .input-group-text {
+  border: none;
+  background-color: #000;
+  height: 48px;
+  padding: 1.25rem;
+  color: var(--accent-color);
 }
 
 .search-result__container {

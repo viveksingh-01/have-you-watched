@@ -1,6 +1,8 @@
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, Button, Image } from 'react-bootstrap';
+import { Form, Button, Image, InputGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { IMAGE_URL, SEARCH_API_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
@@ -59,15 +61,19 @@ const SearchBox: React.FC = () => {
           <Form.Label htmlFor="formInputSearch" srOnly>
             Search
           </Form.Label>
-          <Form.Control
-            className="mb-2 mr-sm-2 search-box__input"
-            placeholder="Search"
-            value={searchText}
-            onChange={searchHandler}
-          />
-          <Button type="submit" className="mb-2">
-            Submit
-          </Button>
+          <InputGroup className="mb-3">
+            <Form.Control
+              className="search-box__input"
+              placeholder="Search"
+              value={searchText}
+              onChange={searchHandler}
+            />
+            <InputGroup.Append>
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faSearch} />
+              </InputGroup.Text>
+            </InputGroup.Append>
+          </InputGroup>
         </Form>
         {searchText && showResults && (
           <section className="search-result__container">
