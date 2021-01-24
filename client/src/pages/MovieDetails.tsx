@@ -25,6 +25,7 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
           `${API_URL}/${match.params.movieId}?api_key=${MOVIE_DB_API_KEY}&language=en-US`
         );
         setMovieDetail(data);
+        scrollToTop();
       } catch (error) {
         console.error(error);
       }
@@ -45,6 +46,18 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
     };
     fetchMovieCredits();
   }, [match.params.movieId]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const getRatingColor = (rating: number | any): string => {
     let ratingColor = '#ff0000';
