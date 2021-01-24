@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import LandingPage from './pages/LandingPage';
-import NavigationBar from './components/NavigationBar';
-import Footer from './components/Footer';
+import { LandingPage, MovieDetails } from './pages';
+import { NavigationBar, Footer } from './components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import MovieDetails from './pages/MovieDetails';
 
 function App() {
   return (

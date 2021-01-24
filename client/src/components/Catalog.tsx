@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { IMovie } from '../types/Movie';
-import LoadingSpinner from './LoadingSpinner';
-import MovieCard from './MovieCard';
+import { LoadingSpinner, MovieCard } from '../components';
 
 const Catalog = ({ header, url }: { header: string; url: string }) => {
   const [movies, setMovies] = useState<IMovie[]>([]);

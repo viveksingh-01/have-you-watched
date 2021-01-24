@@ -1,6 +1,5 @@
 import React from 'react';
-import Catalog from '../components/Catalog';
-import SearchBox from '../components/SearchBox';
+import { Catalog, SearchBox } from '../components';
 import { API_URL } from '../config/constants';
 import { MOVIE_DB_API_KEY } from '../config/key';
 
