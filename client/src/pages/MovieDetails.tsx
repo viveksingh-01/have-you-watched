@@ -1,14 +1,14 @@
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap';
-import { RouteComponentProps, useHistory } from 'react-router';
-import { API_URL, IMAGE_URL, IMAGE_URL_ORIG } from '../config/constants';
-import { MOVIE_DB_API_KEY } from '../config/key';
-import { IMovieDetail } from '../types/MovieDetail';
 import NumberFormat from 'react-number-format';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { RouteComponentProps, useHistory } from 'react-router';
 import { Catalog, CreditsSection } from '../components';
+import { API_URL, IMAGE_URL, IMAGE_URL_ORIG } from '../config/constants';
+import { API_KEY } from '../config/key';
+import { IMovieDetail } from '../types/MovieDetail';
 
 type TParams = { movieId: string };
 
@@ -20,7 +20,7 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
     const fetchMovieDetails = async () => {
       try {
         const { data } = await axios.get(
-          `${API_URL}/${match.params.movieId}?api_key=${MOVIE_DB_API_KEY}&language=en-US`
+          `${API_URL}/${match.params.movieId}?api_key=${API_KEY}&language=en-US`
         );
         setMovieDetail(data);
         scrollToTop();
@@ -181,7 +181,7 @@ const MovieDetails: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
       </section>
       <Catalog
         header={'Similar Movies'}
-        url={`${API_URL}/${match.params.movieId}/similar?api_key=${MOVIE_DB_API_KEY}&language=en-US`}
+        url={`${API_URL}/${match.params.movieId}/similar?api_key=${API_KEY}&language=en-US`}
       />
     </>
   );

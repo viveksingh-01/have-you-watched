@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { API_URL, IMAGE_URL } from '../config/constants';
-import { MOVIE_DB_API_KEY } from '../config/key';
+import { API_KEY } from '../config/key';
 import { IMovieCredits } from '../types/MovieCredits';
 
 interface IProps {
@@ -15,7 +15,7 @@ const CreditsSection: React.FC<IProps> = ({ movieId }) => {
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}/${movieId}/credits?api_key=${MOVIE_DB_API_KEY}&language=en-US`);
+        const { data } = await axios.get(`${API_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`);
         setMovieCredits(data.cast);
       } catch (error) {
         console.error(error);

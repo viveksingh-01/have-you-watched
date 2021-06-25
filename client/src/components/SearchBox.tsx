@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Form, Image, InputGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { IMAGE_URL, SEARCH_API_URL } from '../config/constants';
-import { MOVIE_DB_API_KEY } from '../config/key';
+import { API_KEY } from '../config/key';
 import { IMovieDetail } from '../types/MovieDetail';
 
 const SearchBox: React.FC = () => {
@@ -16,7 +16,7 @@ const SearchBox: React.FC = () => {
   const history = useHistory();
 
   const fetchMovies = async (searchedText: string) => {
-    const url = `${SEARCH_API_URL}?api_key=${MOVIE_DB_API_KEY}&query=${searchedText}`;
+    const url = `${SEARCH_API_URL}?api_key=${API_KEY}&query=${searchedText}`;
     try {
       const { data } = await axios.get(url);
       setSearchResults(data?.results?.slice(0, 10));
