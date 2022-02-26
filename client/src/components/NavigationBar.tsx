@@ -10,7 +10,7 @@ const NavigationBar = () => {
           <LinkContainer to="/" exact>
             <Navbar.Brand className="navbar--brand">Have You Watched?</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         </Container>
       </Navbar>
     </>
